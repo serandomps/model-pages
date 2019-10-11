@@ -1,0 +1,27 @@
+{
+    "name": "pages",
+    "description": "pages component",
+    "scripts": [
+        "index.js",
+        "create/index.js",
+        "findone/index.js",
+        "remove/index.js",
+        "review/index.js",
+        "service/index.js"
+    ],
+    "styles": ["styles.css"],
+    "templates": [
+        "create/template.html",
+        "findone/template.html",
+        "find/template.html",
+        "remove/template.html",
+        "review/template.html"
+    ],
+    "main": "index.js",
+    "dependencies": {
+        "serandomps/serand": "master",
+        "serandomps/utils": "master",
+        "serandomps/dust": "master",
+        "serandomps/form": "master"
+    }
+}
