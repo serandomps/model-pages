@@ -3,7 +3,7 @@ var utils = require('utils');
 exports.findOne = function (options, done) {
     $.ajax({
         method: 'GET',
-        url: utils.resolve('accounts:///apis/v/pages/' + options.id),
+        url: utils.resolve('www:///apis/v/pages/' + options.id),
         dataType: 'json',
         success: function (data) {
             done(null, data);
@@ -17,7 +17,7 @@ exports.findOne = function (options, done) {
 exports.find = function (options, done) {
     $.ajax({
         method: 'GET',
-        url: utils.resolve('accounts:///apis/v/pages' + utils.toData(options)),
+        url: utils.resolve('www:///apis/v/pages' + utils.toData(options)),
         dataType: 'json',
         success: function (data) {
             done(null, data);
@@ -31,7 +31,7 @@ exports.find = function (options, done) {
 exports.remove = function (options, done) {
     $.ajax({
         method: 'DELETE',
-        url: utils.resolve('accounts:///apis/v/pages/' + options.id),
+        url: utils.resolve('www:///apis/v/pages/' + options.id),
         dataType: 'json',
         success: function (data) {
             done(null, data);
@@ -44,7 +44,7 @@ exports.remove = function (options, done) {
 
 exports.create = function (options, done) {
     $.ajax({
-        url: utils.resolve('accounts:///apis/v/pages' + (options.id ? '/' + options.id : '')),
+        url: utils.resolve('www:///apis/v/pages' + (options.id ? '/' + options.id : '')),
         type: options.id ? 'PUT' : 'POST',
         dataType: 'json',
         contentType: 'application/json',
