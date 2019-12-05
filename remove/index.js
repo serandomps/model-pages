@@ -3,13 +3,13 @@ var serand = require('serand');
 var utils = require('utils');
 var Page = require('../service');
 
-dust.loadSource(dust.compile(require('./template'), 'pages-remove'));
+dust.loadSource(dust.compile(require('./template'), 'model-pages-remove'));
 
 module.exports = function (ctx, container, options, done) {
     var sandbox = container.sandbox;
     Page.findOne({id: options.id}, function (err, page) {
         if (err) return done(err);
-        dust.render('pages-remove', serand.pack(page, container), function (err, out) {
+        dust.render('model-pages-remove', serand.pack(page, container), function (err, out) {
             if (err) {
                 return done(err);
             }
@@ -23,7 +23,7 @@ module.exports = function (ctx, container, options, done) {
                 });
             });
             done(null, function () {
-                $('.pages-remove', sandbox).remove();
+                $('.model-pages-remove', sandbox).remove();
             });
         });
     });

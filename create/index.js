@@ -4,7 +4,7 @@ var utils = require('utils');
 var serand = require('serand');
 var Page = require('../service');
 
-dust.loadSource(dust.compile(require('./template.html'), 'pages-create'));
+dust.loadSource(dust.compile(require('./template.html'), 'model-pages-create'));
 
 var configs = {
     title: {
@@ -87,7 +87,7 @@ var render = function (ctx, container, options, page, done) {
     cont._ = {
         parent: container.parent
     };
-    dust.render('pages-create', serand.pack(cont, container), function (err, out) {
+    dust.render('model-pages-create', serand.pack(cont, container), function (err, out) {
         if (err) {
             return done(err);
         }
@@ -110,7 +110,7 @@ var render = function (ctx, container, options, page, done) {
                     },
                     form: pagesForm,
                     clean: function () {
-                        $('.pages-create', sandbox).remove();
+                        $('.model-pages-create', sandbox).remove();
                     }
                 });
                 return;
@@ -129,7 +129,7 @@ var render = function (ctx, container, options, page, done) {
             done(null, {
                 form: pagesForm,
                 clean: function () {
-                    $('.pages-create', sandbox).remove();
+                    $('.model-pages-create', sandbox).remove();
                 }
             });
         });

@@ -2,7 +2,7 @@ var dust = require('dust')();
 var serand = require('serand');
 var utils = require('utils');
 
-dust.loadSource(dust.compile(require('./template.html'), 'pages-findone'));
+dust.loadSource(dust.compile(require('./template.html'), 'model-pages-findone'));
 
 var findOne = function (id, done) {
     $.ajax({
@@ -24,13 +24,13 @@ module.exports = function (ctx, container, options, done) {
             return done(err);
         }
         var sandbox = container.sandbox;
-        dust.render('pages-findone', serand.pack(data, container), function (err, out) {
+        dust.render('model-pages-findone', serand.pack(data, container), function (err, out) {
             if (err) {
                 return done(err);
             }
             sandbox.append(out);
             done(null, function () {
-                $('.pages-findone', sandbox).remove();
+                $('.model-pages-findone', sandbox).remove();
             });
         });
     });

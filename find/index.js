@@ -3,7 +3,7 @@ var serand = require('serand');
 var utils = require('utils');
 var Page = require('../service');
 
-dust.loadSource(dust.compile(require('./template.html'), 'pages-find'));
+dust.loadSource(dust.compile(require('./template.html'), 'model-pages-find'));
 
 module.exports = function (ctx, container, options, done) {
     Page.find({}, function (err, data) {
@@ -11,7 +11,7 @@ module.exports = function (ctx, container, options, done) {
             return done(err);
         }
         var sandbox = container.sandbox;
-        dust.render('pages-find', serand.pack({
+        dust.render('model-pages-find', serand.pack({
             title: options.title,
             size: 6,
             pages: data
@@ -21,7 +21,7 @@ module.exports = function (ctx, container, options, done) {
             }
             sandbox.append(out);
             done(null, function () {
-                $('.pages-find', sandbox).remove();
+                $('.model-pages-find', sandbox).remove();
             });
         });
     });

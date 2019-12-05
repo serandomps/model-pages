@@ -3,7 +3,7 @@ var serand = require('serand');
 var utils = require('utils');
 var Page = require('../service');
 
-dust.loadSource(dust.compile(require('./template'), 'pages-review'));
+dust.loadSource(dust.compile(require('./template'), 'model-pages-review'));
 
 module.exports = function (ctx, container, options, done) {
     var sandbox = container.sandbox;
@@ -12,12 +12,12 @@ module.exports = function (ctx, container, options, done) {
             return done(err);
         }
         page = serand.pack(page, container);
-        dust.render('pages-review', page, function (err, out) {
+        dust.render('model-pages-review', page, function (err, out) {
             if (err) {
                 return done(err);
             }
             sandbox.append(out);
-            $('.page-ok', sandbox).on('click', function () {
+            $('.model-page-ok', sandbox).on('click', function () {
                 var thiz = $(this);
                 utils.loading();
                 utils.publish('www', 'pages', page, function (err) {
@@ -26,7 +26,7 @@ module.exports = function (ctx, container, options, done) {
                         return console.error(err);
                     }
                     thiz.removeClass('text-primary').addClass('text-success')
-                        .siblings('.page-bad').addClass('hidden');
+                        .siblings('.model-page-bad').addClass('hidden');
 
                     setTimeout(function () {
                         serand.redirect(options.location || '/pages');
@@ -34,11 +34,11 @@ module.exports = function (ctx, container, options, done) {
                 });
             });
 
-            $('.page-bad', sandbox).on('click', function () {
+            $('.model-page-bad', sandbox).on('click', function () {
                 serand.redirect(options.location || '/pages');
             });
             done(null, function () {
-                $('.pages-review', sandbox).remove();
+                $('.model-pages-review', sandbox).remove();
             });
         });
     });

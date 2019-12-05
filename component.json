@@ -1,6 +1,6 @@
 {
-    "name": "pages",
-    "description": "pages component",
+    "name": "model-pages",
+    "description": "model-pages component",
     "scripts": [
         "index.js",
         "create/index.js",
