@@ -27,6 +27,9 @@ var configs = {
             done(null, $('textarea', source).val());
         },
         validate: function (context, data, value, done) {
+            if (!value) {
+                return done(null, 'Please specify the body of your page.');
+            }
             done(null, null, value);
         },
         update: function (context, source, error, value, done) {
@@ -55,7 +58,7 @@ var create = function (pagesForm, page, done) {
                     return done(err);
                 }
                 if (errors) {
-                    return done();
+                    return done(null, errors);
                 }
                 var o = {};
                 if (page) {
@@ -116,11 +119,14 @@ var render = function (ctx, container, options, page, done) {
                 return;
             }
             sandbox.on('click', '.create', function (e) {
-                create(pagesForm, page, function (err) {
+                create(pagesForm, page, function (err, errors) {
                     if (err) {
                         return console.error(err);
                     }
-                    serand.redirect(options.location ||'/pages');
+                    if (errors) {
+                        return;
+                    }
+                    serand.redirect(options.location || '/pages');
                 });
             });
             sandbox.on('click', '.cancel', function (e) {
