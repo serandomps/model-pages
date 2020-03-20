@@ -79,7 +79,9 @@ var create = function (pagesForm, page, done) {
                 });
                 utils.create('www', 'pages', Page.create, page, o, function () {
                     return true
-                }, done);
+                }, function (err, page) {
+                    done(err, null, page);
+                });
             });
         });
     });
@@ -121,7 +123,9 @@ var render = function (ctx, container, options, page, done) {
                 return;
             }
             sandbox.on('click', '.create', function (e) {
+                utils.loading(500);
                 create(pagesForm, page, function (err, errors) {
+                    utils.loaded();
                     if (err) {
                         return console.error(err);
                     }
