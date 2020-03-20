@@ -77,7 +77,9 @@ var create = function (pagesForm, page, done) {
                         o[key] = value;
                     }
                 });
-                utils.create('www', 'pages', Page.create, page, o, done);
+                utils.create('www', 'pages', Page.create, page, o, function () {
+                    return true
+                }, done);
             });
         });
     });
