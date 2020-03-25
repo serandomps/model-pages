@@ -123,7 +123,7 @@ var render = function (ctx, container, options, page, done) {
                 return;
             }
             sandbox.on('click', '.create', function (e) {
-                utils.loading(500);
+                utils.loading();
                 create(pagesForm, page, function (err, errors) {
                     utils.loaded();
                     if (err) {
