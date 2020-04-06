@@ -13,7 +13,7 @@ var configs = {
         },
         validate: function (context, data, value, done) {
             if (!value) {
-                return done(null, 'Please specify a title for your page');
+                return done(null, 'Please specify a title for your page.');
             }
             done(null, null, value);
         },
