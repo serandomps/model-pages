@@ -20,7 +20,7 @@ module.exports = function (ctx, container, options, done) {
             $('.model-page-ok', sandbox).on('click', function () {
                 var thiz = $(this);
                 utils.loading();
-                utils.publish('www', 'pages', page, function (err) {
+                utils.publish('pages', page, function (err) {
                     utils.loaded();
                     if (err) {
                         return console.error(err);

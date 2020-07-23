@@ -77,7 +77,7 @@ var create = function (pagesForm, page, done) {
                         o[key] = value;
                     }
                 });
-                utils.create('www', 'pages', Page.create, page, o, function () {
+                utils.create('pages', Page.create, page, o, function () {
                     return true
                 }, function (err, page) {
                     done(err, null, page);
